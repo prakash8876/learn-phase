@@ -15,6 +15,6 @@ public class Consumer {
 
     @KafkaListener(topics = KAFKA_TOPIC, groupId = KAFKA_GROUP)
     public void consume(String message) {
-        logger.info("#### -> Consumed message -> {}", message);
+        logger.info("#### Consumed message -> [{}]", message);
     }
 }
