@@ -3,6 +3,7 @@ package io.matoshri.learn.address;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -37,5 +38,13 @@ public class AddressService {
             address.setPinCode(DEFAULT_PIN_CODE);
         }
         return repo.save(address);
+    }
+
+    public List<Address> getAllAddress() {
+        return (List<Address>) this.repo.findAll();
+    }
+
+    public Address getAddressById(Integer id) {
+        return this.repo.findById(id).orElse(null);
     }
 }

@@ -22,4 +22,10 @@ public class StudentController {
 
     @GetMapping
     public Collection<Student> getAll() { return service.getAllStudents(); }
+
+    @GetMapping
+    public Student getStudentById(@RequestParam Integer id) {
+        return service.getAllStudents().stream().filter(s -> s.getId().equals(id)).findFirst()
+                .orElse(null);
+    }
 }

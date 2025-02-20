@@ -21,4 +21,9 @@ public class CollegeController {
 
     @GetMapping
     public Collection<College> getAll() { return service.getAll(); }
+
+    @GetMapping
+    public College getCollegeById(@RequestParam Integer id) {
+        return service.getCollege(id);
+    }
 }
