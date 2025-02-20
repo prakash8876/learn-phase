@@ -1,0 +1,68 @@
+[
+  {
+"id": null,
+"studentName": "Cornall Vacher",
+"studentEmail": "cvacher0@accuweather.com",
+"studentClass": "neque",
+"college": {
+"collegeName": "Royal Academy of Music"
+},
+"address": {
+"area": "5543 Declaration Place",
+"city": "Iza",
+"pinCode": "121212"
+}
+}, {
+"id": null,
+"studentName": "Clotilda Brehat",
+"studentEmail": "cbrehat1@bing.com",
+"studentClass": "vitae",
+"college": {
+"collegeName": "Universidade Lusiada"
+},
+"address": {
+"area": "333 Forster Street",
+"city": "Elias Fausto",
+"pinCode": "13350-000"
+}
+}, {
+"id": null,
+"studentName": "Dorri Bullock",
+"studentEmail": "dbullock2@odnoklassniki.ru",
+"studentClass": "quis",
+"college": {
+"collegeName": "State University of Aerospace Technologies"
+},
+"address": {
+"area": "61898 Harper Drive",
+"city": "Kedungbulu",
+"pinCode": "656565"
+}
+}, {
+"id": null,
+"studentName": "Ellerey O'Hagerty",
+"studentEmail": "eohagerty3@census.gov",
+"studentClass": "eget",
+"college": {
+"collegeName": "Universidad Tecnológica de México"
+},
+"address": {
+"area": "9 Kim Park",
+"city": "Luleå",
+"pinCode": "973 23"
+}
+}, {
+"id": null,
+"studentName": "Killian Blackater",
+"studentEmail": "kblackater4@chronoengine.com",
+"studentClass": "sapien",
+"college": {
+"collegeName": "University of California, Santa Cruz"
+},
+"address": {
+"area": "9 Sunnyside Way",
+"city": "Monte Alto",
+"pinCode": "15910-000"
+}
+}
+]
