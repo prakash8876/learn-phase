@@ -1,6 +1,5 @@
 package io.matoshri.learn.student;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -9,8 +8,11 @@ import java.util.Collection;
 @RequestMapping(value = "/students")
 public class StudentController {
 
-    @Autowired
-    StudentService service;
+    private final StudentService service;
+
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
 
     @PostMapping("/new")
     public Object save(@RequestBody Student newStudent) {

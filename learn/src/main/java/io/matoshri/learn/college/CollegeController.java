@@ -1,6 +1,5 @@
 package io.matoshri.learn.college;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -9,8 +8,11 @@ import java.util.Collection;
 @RequestMapping(value = "/college")
 public class CollegeController {
 
-    @Autowired
-    private CollegeService service;
+    private final CollegeService service;
+
+    public CollegeController(CollegeService service) {
+        this.service = service;
+    }
 
     @PostMapping(value = "/new")
     public Object save(@RequestBody College college) {

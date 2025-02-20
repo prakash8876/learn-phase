@@ -28,7 +28,7 @@ public class StudentService {
     private final CollegeService collegeService;
     private final Producer producer;
 
-    final Gson gson = new Gson();
+    private final Gson gson = new Gson();
 
     public StudentService(StudentRepository repo, AddressService addressService, CollegeService collegeService, Producer producer) {
         this.repo = repo;
@@ -62,8 +62,13 @@ public class StudentService {
     }
 
     private void sendNotification(Student student) {
-        StudentProduce produce = new StudentProduce(student.getId(), student.getStudentName(), student.getStudentEmail(), student.getStudentClass()
-                , student.getAddress().toString(), student.getCollege().getCollegeName());
+        StudentProduce produce = new StudentProduce(
+                student.getId(),
+                student.getStudentName(),
+                student.getStudentEmail(),
+                student.getStudentClass(),
+                student.getAddress().toString(),
+                student.getCollege().getCollegeName());
         String json = gson.toJson(produce);
         producer.sendMessage(json);
     }
