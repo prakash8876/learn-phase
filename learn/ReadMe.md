@@ -17,5 +17,5 @@ $ bin/kafka-topics.sh --create --topic learn-topic --bootstrap-server localhost:
 
 # Read the events
 ```shell
-$ bin/kafka-console-consumer.sh --topic quickstart-events --from-beginning --bootstrap-server
+$ bin/kafka-console-consumer.sh --topic learn-topic --from-beginning --bootstrap-server
 ``` 
