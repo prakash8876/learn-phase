@@ -15,8 +15,12 @@ public class Producer {
     @Value("${learn.kafka.topic}")
     private String kafkaTopic;
 
+    private final KafkaTemplate<String, String> kafkaTemplate;
+
     @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
+    public Producer(KafkaTemplate<String, String> kafkaTemplate) {
+        this.kafkaTemplate = kafkaTemplate;
+    }
 
     public void sendMessage(String message) {
         log.info("### Sending message: [{}]", message);

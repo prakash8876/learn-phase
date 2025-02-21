@@ -2,7 +2,6 @@ package io.matoshri.learn.student;
 
 import com.google.gson.Gson;
 import io.matoshri.learn.address.Address;
-import io.matoshri.learn.address.AddressService;
 import io.matoshri.learn.college.College;
 import io.matoshri.learn.college.CollegeService;
 import io.matoshri.learn.exception.StudentException;
@@ -25,16 +24,14 @@ public class StudentService {
     private static final Logger log = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository repo;
-    private final AddressService addressService;
     private final CollegeService collegeService;
     private final Producer producer;
 
     private final Gson gson = new Gson();
 
     @Autowired
-    public StudentService(StudentRepository repo, AddressService addressService, CollegeService collegeService, Producer producer) {
+    public StudentService(StudentRepository repo, CollegeService collegeService, Producer producer) {
         this.repo = repo;
-        this.addressService = addressService;
         this.collegeService = collegeService;
         this.producer = producer;
     }
