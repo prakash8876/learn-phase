@@ -1,5 +1,7 @@
 package io.matoshri.learn.college;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -15,15 +17,15 @@ public class CollegeController {
     }
 
     @PostMapping(value = "/new")
-    public Object save(@RequestBody College college) {
-        return service.save(college).getId();
+    public ResponseEntity<Object> save(@RequestBody College college) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(college).getId());
     }
 
     @GetMapping("/all")
-    public Collection<College> getAll() { return service.getAll(); }
+    public ResponseEntity<Collection<College>> getAll() { return ResponseEntity.ok(service.getAll()); }
 
     @GetMapping
-    public College getCollegeById(@RequestParam(name = "id") Integer id) {
-        return service.getCollege(id);
+    public ResponseEntity<Object> getCollegeById(@RequestParam(name = "id") Integer id) {
+        return ResponseEntity.ok(service.getCollege(id));
     }
 }

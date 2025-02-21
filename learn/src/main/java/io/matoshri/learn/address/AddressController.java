@@ -1,6 +1,10 @@
 package io.matoshri.learn.address;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
@@ -15,12 +19,12 @@ public class AddressController {
     }
 
     @GetMapping("/all")
-    public Collection<Address> getAll() {
-        return addressService.getAllAddress();
+    public ResponseEntity<Collection<Address>> getAll() {
+        return ResponseEntity.ok(addressService.getAllAddress());
     }
 
     @GetMapping("/{id}")
-    public Address getAddressById(@PathVariable int id) {
-        return addressService.getAddressById(id);
+    public ResponseEntity<Object> getAddressById(@PathVariable int id) {
+        return ResponseEntity.ok(addressService.getAddressById(id));
     }
 }
