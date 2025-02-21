@@ -1,5 +1,8 @@
 package io.matoshri.learn.exception;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CollegeException extends AppRuntimeException {
 
     public CollegeException() {

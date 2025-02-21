@@ -1,5 +1,8 @@
 package io.matoshri.learn.exception;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class AppRuntimeException extends RuntimeException {
 
     public AppRuntimeException() {

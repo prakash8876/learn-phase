@@ -1,6 +1,7 @@
 package io.matoshri.learn.address;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ public class AddressService {
 
     private final AddressRepository repo;
 
+    @Autowired
     public AddressService(AddressRepository repo) {
         this.repo = repo;
     }

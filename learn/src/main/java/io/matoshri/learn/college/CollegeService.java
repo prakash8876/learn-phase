@@ -7,6 +7,7 @@ import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,6 +23,7 @@ public class CollegeService {
     private final CollegeRepository repo;
     private final Producer producer;
 
+    @Autowired
     public CollegeService(CollegeRepository repo, Producer producer) {
         this.repo = repo;
         this.producer = producer;

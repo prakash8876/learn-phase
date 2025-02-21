@@ -1,5 +1,6 @@
 package io.matoshri.learn.student;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ public class StudentController {
 
     private final StudentService service;
 
+    @Autowired
     public StudentController(StudentService service) {
         this.service = service;
     }
@@ -33,7 +35,7 @@ public class StudentController {
         if (first.isPresent()) {
             return ResponseEntity.ok(first.get());
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            return ResponseEntity.notFound().build();
         }
     }
 }
