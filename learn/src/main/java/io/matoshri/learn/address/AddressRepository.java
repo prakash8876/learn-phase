@@ -1,8 +1,6 @@
 package io.matoshri.learn.address;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.repository.ListCrudRepository;
 
-@Repository
-public interface AddressRepository extends CrudRepository<Address, Integer> {
+public interface AddressRepository extends ListCrudRepository<Address, Integer> {
 }
