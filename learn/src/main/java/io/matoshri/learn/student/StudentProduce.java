@@ -6,6 +6,4 @@ public record StudentProduce(
         String studentEmail,
         String studentStd,
         String address,
-    String college) {
-
-}
+    String college) {}
