@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "student")
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = {"college", "address"})

@@ -1,14 +1,12 @@
 package io.matoshri.learn.address;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
+@Table(name = "address")
 @Getter
 @Setter
 @EqualsAndHashCode
