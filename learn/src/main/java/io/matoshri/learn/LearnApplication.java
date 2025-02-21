@@ -18,6 +18,7 @@ public class LearnApplication {
 	private static final Logger log = LoggerFactory.getLogger(LearnApplication.class);
 
 	public static void main(String[] args) {
+		System.setProperty("server.servlet.context-path", "/learn");
 		SpringApplication.run(LearnApplication.class, args);
 	}
 

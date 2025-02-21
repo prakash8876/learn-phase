@@ -20,12 +20,10 @@ public class CollegeService {
     private static final Logger log = LoggerFactory.getLogger(CollegeService.class);
 
     private final CollegeRepository repo;
-    private final AddressService addressService;
     private final Producer producer;
 
-    public CollegeService(CollegeRepository repo, AddressService addressService, Producer producer) {
+    public CollegeService(CollegeRepository repo, Producer producer) {
         this.repo = repo;
-        this.addressService = addressService;
         this.producer = producer;
     }
 
@@ -34,9 +32,9 @@ public class CollegeService {
     public College save(College college) {
         validateCollege(college);
 
-        Address address = college.getAddress();
-        address = addressService.saveAddress(address);
-        college.setAddress(address);
+//        Address address = college.getAddress();
+//        address = addressService.saveAddress(address);
+//        college.setAddress(address);
 
         college = repo.save(college);
 

@@ -1,9 +1,6 @@
 package io.matoshri.learn.address;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -17,13 +14,13 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Collection<Address> getAll() {
         return addressService.getAllAddress();
     }
 
-    @GetMapping
-    public Address getAddressById(@RequestParam("id") Integer id) {
+    @GetMapping("/{id}")
+    public Address getAddressById(@PathVariable int id) {
         return addressService.getAddressById(id);
     }
 }

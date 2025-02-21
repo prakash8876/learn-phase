@@ -19,11 +19,11 @@ public class CollegeController {
         return service.save(college).getId();
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Collection<College> getAll() { return service.getAll(); }
 
     @GetMapping
-    public College getCollegeById(@RequestParam Integer id) {
+    public College getCollegeById(@RequestParam(name = "id") Integer id) {
         return service.getCollege(id);
     }
 }

@@ -24,6 +24,7 @@ public class College implements Serializable {
 
     private String collegeName;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;

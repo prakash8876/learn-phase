@@ -20,7 +20,7 @@ public class StudentController {
         return save.getId();
     }
 
-    @GetMapping
+    @GetMapping("/all")
     public Collection<Student> getAll() { return service.getAllStudents(); }
 
     @GetMapping

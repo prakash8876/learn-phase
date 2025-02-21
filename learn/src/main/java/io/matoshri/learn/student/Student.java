@@ -26,7 +26,7 @@ public class Student implements Serializable {
     private String studentEmail;
     private String studentClass;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "college_id")
     private College college;
 
