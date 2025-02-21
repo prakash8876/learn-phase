@@ -3,7 +3,6 @@ package io.matoshri.learn.exception;
 public class CollegeException extends AppRuntimeException {
 
     public CollegeException() {
-        super();
     }
 
     public CollegeException(String message, Throwable cause) {

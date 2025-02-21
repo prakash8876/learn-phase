@@ -1,6 +1,5 @@
 package io.matoshri.learn.college;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ public class CollegeController {
 
     private final CollegeService service;
 
-    @Autowired
     public CollegeController(CollegeService service) {
         this.service = service;
     }

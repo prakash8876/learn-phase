@@ -9,7 +9,6 @@ import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -29,7 +28,6 @@ public class StudentService {
 
     private final Gson gson = new Gson();
 
-    @Autowired
     public StudentService(StudentRepository repo, CollegeService collegeService, Producer producer) {
         this.repo = repo;
         this.collegeService = collegeService;
