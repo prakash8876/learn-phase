@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
+import java.util.Collections;
 
 @RestController
 @RequestMapping("/address")
@@ -14,17 +15,23 @@ public class AddressController {
 
     private final AddressService addressService;
 
-    public AddressController(AddressService addressService) {
+    AddressController(AddressService addressService) {
         this.addressService = addressService;
     }
 
     @GetMapping("/all")
-    public ResponseEntity<Collection<Address>> getAll() {
-        return ResponseEntity.ok(addressService.getAllAddress());
+    ResponseEntity<Collection<Address>> all() {
+        Collection<Address> addressList = addressService.getAll();
+        return ResponseEntity.ok(Collections.unmodifiableCollection(addressList));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getAddressById(@PathVariable int id) {
-        return ResponseEntity.ok(addressService.getAddressById(id));
+    ResponseEntity<Object> byId(@PathVariable int id) {
+        return ResponseEntity.ok(addressService.getById(id));
+    }
+
+    @GetMapping("/{city}")
+    ResponseEntity<Object> byCity(@PathVariable String city) {
+        return ResponseEntity.ok(addressService.getByCity(city));
     }
 }

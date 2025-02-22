@@ -20,7 +20,7 @@ public class Producer {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(String message) {
+    public void sendMessage(final String message) {
         log.info("### Sending message: [{}]", message);
         this.kafkaTemplate.send(kafkaTopic, message);
         log.info("### Message sent successfully.");

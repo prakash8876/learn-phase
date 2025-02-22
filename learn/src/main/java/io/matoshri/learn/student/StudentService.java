@@ -2,6 +2,7 @@ package io.matoshri.learn.student;
 
 import com.google.gson.Gson;
 import io.matoshri.learn.address.Address;
+import io.matoshri.learn.address.AddressService;
 import io.matoshri.learn.college.College;
 import io.matoshri.learn.college.CollegeService;
 import io.matoshri.learn.exception.StudentException;
@@ -24,19 +25,27 @@ public class StudentService {
 
     private final StudentRepository repo;
     private final CollegeService collegeService;
+    private final AddressService addressService;
     private final Producer producer;
 
     private final Gson gson = new Gson();
 
-    public StudentService(StudentRepository repo, CollegeService collegeService, Producer producer) {
+    public StudentService(StudentRepository repo,
+                          CollegeService collegeService,
+                          AddressService addressService,
+                          Producer producer) {
         this.repo = repo;
         this.collegeService = collegeService;
+        this.addressService = addressService;
         this.producer = producer;
     }
 
     @Transactional
     public Student saveNewStudent(Student newStudent) {
         validateStudent(newStudent);
+
+        Address address = addressService.saveAddress(newStudent.getAddress());
+        newStudent.setAddress(address);
 
         College college = newStudent.getCollege();
         String collegeName = college.getCollegeName();

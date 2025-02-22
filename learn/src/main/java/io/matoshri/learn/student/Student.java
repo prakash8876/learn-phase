@@ -38,6 +38,15 @@ public class Student implements Serializable {
     @CreationTimestamp
     private LocalDateTime createdAd;
 
+    public Student(String studentName, String studentEmail, String studentClass, College college, Address address) {
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentClass = studentClass;
+        this.college = college;
+        this.address = address;
+    }
+
+
     @Override
     public String toString() {
         return new StringBuilder()

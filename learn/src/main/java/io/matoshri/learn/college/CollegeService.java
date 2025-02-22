@@ -1,5 +1,7 @@
 package io.matoshri.learn.college;
 
+import io.matoshri.learn.address.Address;
+import io.matoshri.learn.address.AddressService;
 import io.matoshri.learn.exception.CollegeException;
 import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
@@ -18,10 +20,12 @@ public class CollegeService {
     private static final Logger log = LoggerFactory.getLogger(CollegeService.class);
 
     private final CollegeRepository repo;
+    private final AddressService addressService;
     private final Producer producer;
 
-    public CollegeService(CollegeRepository repo, Producer producer) {
+    public CollegeService(CollegeRepository repo, AddressService addressService, Producer producer) {
         this.repo = repo;
+        this.addressService = addressService;
         this.producer = producer;
     }
 
@@ -29,6 +33,9 @@ public class CollegeService {
     @Transactional
     public College save(College college) {
         validateCollege(college);
+
+        Address address = addressService.saveAddress(college.getAddress());
+        college.setAddress(address);
 
         college = repo.save(college);
         log.info("New college added: {}", college);
