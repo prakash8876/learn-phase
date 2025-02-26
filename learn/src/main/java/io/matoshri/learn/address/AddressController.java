@@ -1,5 +1,6 @@
 package io.matoshri.learn.address;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,5 +34,10 @@ public class AddressController {
     @GetMapping("/{city}")
     ResponseEntity<Object> byCity(@PathVariable String city) {
         return ResponseEntity.ok(addressService.getByCity(city));
+    }
+
+    @GetMapping("/page/{pageNo}/{size}")
+    public Page<Address> getAll(@PathVariable Integer pageNo, @PathVariable Integer size) {
+        return addressService.getAll(pageNo, size);
     }
 }

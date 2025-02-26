@@ -22,6 +22,11 @@ public class Producer {
 
     public void sendMessage(final String message) {
         log.info("### Sending message: [{}]", message);
+        try {
+            Thread.sleep(500L);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
         this.kafkaTemplate.send(kafkaTopic, message);
         log.info("### Message sent successfully.");
     }

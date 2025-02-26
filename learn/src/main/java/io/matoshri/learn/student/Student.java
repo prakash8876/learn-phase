@@ -36,7 +36,7 @@ public class Student implements Serializable {
     private Address address;
 
     @CreationTimestamp
-    private LocalDateTime createdAd;
+    private LocalDateTime createdAt;
 
     public Student(String studentName, String studentEmail, String studentClass, College college, Address address) {
         this.studentName = studentName;
