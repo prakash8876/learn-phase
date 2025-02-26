@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/address")
@@ -38,6 +40,8 @@ public class AddressController {
 
     @GetMapping("/page/{pageNo}/{size}")
     public Page<Address> getAll(@PathVariable Integer pageNo, @PathVariable Integer size) {
+        pageNo = Optional.ofNullable(pageNo).orElse(0);
+        size = Optional.ofNullable(size).orElse(10);
         return addressService.getAll(pageNo, size);
     }
 }
