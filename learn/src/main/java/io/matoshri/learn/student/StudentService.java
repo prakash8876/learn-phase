@@ -10,6 +10,8 @@ import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -101,5 +103,9 @@ public class StudentService {
 
     public List<Student> getAllStudents() {
         return repo.findAll();
+    }
+
+    public Page<Student> getAllStudents(Integer page, Integer size) {
+        return repo.findAll(PageRequest.of(page, size));
     }
 }

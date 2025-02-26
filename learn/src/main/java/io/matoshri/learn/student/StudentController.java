@@ -1,5 +1,6 @@
 package io.matoshri.learn.student;
 
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -35,5 +36,13 @@ public class StudentController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/all/{page}/{size}")
+    public Page<Student> getAll(@PathVariable Integer page,
+                                @PathVariable Integer size) {
+        page = Optional.ofNullable(page).orElse(0);
+        size = Optional.ofNullable(size).orElse(10);
+        return service.getAllStudents(page, size);
     }
 }
