@@ -1,3 +1,5 @@
+## Set spring.profiles.active=dev in environment
+
 # Start the ZooKeeper service
 ```shell
 $ bin/zookeeper-server-start.sh config/zookeeper.properties
