@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface AddressRepository extends ListPagingAndSortingRepository<Address, Integer>, ListCrudRepository<Address, Integer> {
+interface AddressRepository extends ListPagingAndSortingRepository<Address, Integer>, ListCrudRepository<Address, Integer> {
 
     @Query("FROM Address a WHERE a.city = :city")
     Optional<Address> findByCity(@Param("city") String city);

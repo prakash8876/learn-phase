@@ -1,6 +1,6 @@
 package io.matoshri.learn.address;
 
-import org.springframework.data.domain.Page;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.Optional;
 
+@Slf4j
 @RestController
 @RequestMapping("/address")
 public class AddressController {
@@ -22,26 +22,34 @@ public class AddressController {
         this.addressService = addressService;
     }
 
-    @GetMapping("/all")
+    @GetMapping
     ResponseEntity<Collection<Address>> all() {
-        Collection<Address> addressList = addressService.getAll();
-        return ResponseEntity.ok(Collections.unmodifiableCollection(addressList));
+        log.info("Fetching all addresses");
+        Collection<Address> addressList = Collections.unmodifiableCollection(addressService.getAll());
+        return ResponseEntity.ok(addressList);
     }
 
     @GetMapping("/{id}")
     ResponseEntity<Object> byId(@PathVariable int id) {
-        return ResponseEntity.ok(addressService.getById(id));
+        log.info("Fetching address by ID: {}", id);
+        final var address = addressService.getById(id);
+        return ResponseEntity.ok(address);
     }
 
     @GetMapping("/{city}")
     ResponseEntity<Object> byCity(@PathVariable String city) {
-        return ResponseEntity.ok(addressService.getByCity(city));
+        log.info("Fetching address by City: {}", city);
+        final var address = addressService.getByCity(city);
+        return ResponseEntity.ok(address);
     }
 
     @GetMapping("/page/{pageNo}/{size}")
-    public Page<Address> getAll(@PathVariable Integer pageNo, @PathVariable Integer size) {
+    public Collection<Address> getAll(@PathVariable Integer pageNo, @PathVariable Integer size) {
+        log.info("Fetching all address from page no {} size {}", pageNo, size);
         pageNo = Optional.ofNullable(pageNo).orElse(0);
         size = Optional.ofNullable(size).orElse(10);
-        return addressService.getAll(pageNo, size);
+        final var all = addressService.getAll(pageNo, size).toList();
+        log.info("Fetched address: {}", all.size());
+        return all;
     }
 }
