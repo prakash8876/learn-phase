@@ -10,6 +10,8 @@ import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,16 +26,19 @@ public class StudentService {
     private static final Logger log = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository repo;
-    private final AddressService addressService;
     private final CollegeService collegeService;
+    private final AddressService addressService;
     private final Producer producer;
 
     private final Gson gson = new Gson();
 
-    public StudentService(StudentRepository repo, AddressService addressService, CollegeService collegeService, Producer producer) {
+    public StudentService(StudentRepository repo,
+                          CollegeService collegeService,
+                          AddressService addressService,
+                          Producer producer) {
         this.repo = repo;
-        this.addressService = addressService;
         this.collegeService = collegeService;
+        this.addressService = addressService;
         this.producer = producer;
     }
 
@@ -41,8 +46,7 @@ public class StudentService {
     public Student saveNewStudent(Student newStudent) {
         validateStudent(newStudent);
 
-        Address address = newStudent.getAddress();
-        address = addressService.saveAddress(address);
+        Address address = addressService.saveAddress(newStudent.getAddress());
         newStudent.setAddress(address);
 
         College college = newStudent.getCollege();
@@ -99,5 +103,9 @@ public class StudentService {
 
     public List<Student> getAllStudents() {
         return repo.findAll();
+    }
+
+    public Page<Student> getAllStudents(Integer page, Integer size) {
+        return repo.findAll(PageRequest.of(page, size));
     }
 }

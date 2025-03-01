@@ -6,7 +6,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 
-public interface StudentRepository extends JpaRepository<Student, Integer> {
+interface StudentRepository extends JpaRepository<Student, Integer> {
 
     @Query("FROM Student s WHERE s.studentName = :studentName")
     Optional<Student> findByStudentName(@Param("studentName") String studentName);

@@ -7,6 +7,8 @@ import io.matoshri.learn.kafka.Producer;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,12 +36,11 @@ public class CollegeService {
     public College save(College college) {
         validateCollege(college);
 
-        Address address = college.getAddress();
-        address = addressService.saveAddress(address);
+        Address address = addressService.saveAddress(college.getAddress());
         college.setAddress(address);
 
         college = repo.save(college);
-
+        log.info("New college added: {}", college);
         producer.sendMessage(college.toString());
         return college;
     }
@@ -75,5 +76,9 @@ public class CollegeService {
         return repo.findAll().stream()
                 .filter(c -> c.getCollegeName().equalsIgnoreCase(collegeName))
                 .findFirst();
+    }
+
+    public Page<College> getAll(int page, int size) {
+        return this.repo.findAll(PageRequest.of(page, size));
     }
 }

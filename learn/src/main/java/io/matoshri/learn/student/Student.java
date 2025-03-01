@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "student")
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = {"college", "address"})
@@ -26,7 +27,7 @@ public class Student implements Serializable {
     private String studentEmail;
     private String studentClass;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "college_id")
     private College college;
 
@@ -35,7 +36,16 @@ public class Student implements Serializable {
     private Address address;
 
     @CreationTimestamp
-    private LocalDateTime createdAd;
+    private LocalDateTime createdAt;
+
+    public Student(String studentName, String studentEmail, String studentClass, College college, Address address) {
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentClass = studentClass;
+        this.college = college;
+        this.address = address;
+    }
+
 
     @Override
     public String toString() {

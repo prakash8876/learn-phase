@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "college")
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = {"address", "students"})
@@ -24,6 +25,7 @@ public class College implements Serializable {
 
     private String collegeName;
 
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;
