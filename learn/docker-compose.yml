@@ -1,0 +1,9 @@
+services:
+  oracle:
+    image: gvenzl/oracle-free:latest
+    environment:
+      ORACLE_RANDOM_PASSWORD: true
+      APP_USER: usr
+      APP_USER_PASSWORD: password
+    ports:
+      - 1521:1521
