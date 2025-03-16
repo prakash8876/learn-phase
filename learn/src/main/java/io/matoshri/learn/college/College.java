@@ -10,19 +10,21 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "college")
 @Getter
 @Setter
 @EqualsAndHashCode(exclude = {"address", "students"})
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "college")
 public class College implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "college_id", unique = true)
     private Integer id;
 
+    @Column(name = "college_name", length = 100)
     private String collegeName;
 
     @JsonIgnore

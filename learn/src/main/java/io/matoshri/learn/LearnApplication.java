@@ -8,6 +8,7 @@ public class LearnApplication {
 
 	public static void main(String[] args) {
 		System.setProperty("server.servlet.context-path", "/learn");
+		System.setProperty("spring.output.ansi.enabled", "always");
 		SpringApplication.run(LearnApplication.class, args);
 	}
 

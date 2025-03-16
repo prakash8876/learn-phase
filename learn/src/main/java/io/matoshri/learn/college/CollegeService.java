@@ -4,6 +4,7 @@ import io.matoshri.learn.address.Address;
 import io.matoshri.learn.address.AddressService;
 import io.matoshri.learn.exception.CollegeException;
 import io.matoshri.learn.kafka.Producer;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,19 +19,13 @@ import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
+@RequiredArgsConstructor
 public class CollegeService {
     private static final Logger log = LoggerFactory.getLogger(CollegeService.class);
 
     private final CollegeRepository repo;
     private final AddressService addressService;
     private final Producer producer;
-
-    public CollegeService(CollegeRepository repo, AddressService addressService, Producer producer) {
-        this.repo = repo;
-        this.addressService = addressService;
-        this.producer = producer;
-    }
-
 
     @Transactional
     public College save(College college) {
